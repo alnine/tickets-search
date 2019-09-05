@@ -1,0 +1,130 @@
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.section {
+  background-color: #ffffff;
+  box-shadow: 0px 1px 4px rgba(91, 137, 164, 0.25);
+  border-radius: 5px;
+}
+
+.currency__btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.9375rem 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #d2d5d6;
+  background: none;
+  color: #2196f3;
+  cursor: pointer;
+  outline: none;
+  transition: all ease-in-out 0.25s;
+}
+
+.currency__btn:not(:first-child) {
+  margin-left: -1px;
+}
+
+.currency__btn:first-child {
+  border-top-left-radius: 0.3125rem;
+  border-bottom-left-radius: 0.3125rem;
+}
+
+.currency__btn:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.currency__btn.active {
+  z-index: 2;
+  border-color: #2196f3;
+  background-color: #2196f3;
+  color: #ffffff;
+  cursor: default;
+}
+
+.currency__btn:not(.active):hover,
+.currency__btn:not(.active):focus {
+  z-index: 1;
+  background-color: #f2fcff;
+  border: 1px solid #64b5f5;
+}
+
+.stop-quantity {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+}
+
+.stop-quantity__item {
+  position: relative;
+  padding: 0.875rem 1.25rem;
+  padding-left: 3.75rem;
+  transition: all ease-in-out 0.25s;
+  cursor: pointer;
+}
+
+.stop-quantity__item:hover,
+.stop-quantity__item:focus {
+  background-color: #f1fcff;
+}
+
+.stop-quantity__item-checkbox {
+  position: absolute;
+  top: 50%;
+  left: 1.25rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #d2d5d6;
+  border-radius: 0.1875rem;
+}
+
+.stop-quantity__item.active > .stop-quantity__item-checkbox {
+  border-color: #2196f3;
+  background-color: #f1fcff;
+}
+
+.stop-quantity__item.active > .stop-quantity__item-checkbox::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.25rem;
+  border: 2px solid #3e9ce8;
+  border-top: none;
+  border-right: none;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.ticket__buy-btn {
+  width: 100%;
+  max-width: 240px;
+  padding: 0.5rem 3.125rem;
+  font-size: 1.25rem;
+  line-height: 1.3em;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.3125rem;
+  background-color: #ff6d00;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1), 0px 1px 0px #d64d08;
+  transition: all ease-in-out 0.25s;
+  cursor: pointer;
+  outline: none;
+}
+
+.ticket__buy-btn:hover,
+.ticket__buy-btn:focus {
+  background-color: #ff8124;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25), 0px 1px 0px #f7661d;
+}
+
+.ticket__buy-btn-cost {
+  text-transform: uppercase;
+}
