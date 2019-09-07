@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="container">
       <Header />
+      <main className="app__content"></main>
     </div>
   );
 }
