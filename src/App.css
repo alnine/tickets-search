@@ -29,12 +29,35 @@
   align-items: center;
 }
 
-.currency__btn {
+.app__filters {
+  padding: 1.25rem 0;
+}
+
+.app__filter {
+  margin-bottom: 2.5rem;
+  padding: 0 1.25rem;
+}
+
+.app__filter:last-child {
+  margin-bottom: 0;
+}
+
+.app__filter--wide {
+  padding: 0;
+}
+
+.app__filter-title {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.currency-toggle__btn {
   position: relative;
   display: inline-block;
   padding: 0.9375rem 1.5rem;
   font-weight: 600;
   text-align: center;
+  text-transform: uppercase;
   border: 1px solid #d2d5d6;
   background: none;
   color: #2196f3;
@@ -43,21 +66,21 @@
   transition: all ease-in-out 0.25s;
 }
 
-.currency__btn:not(:first-child) {
+.currency-toggle__btn:not(:first-child) {
   margin-left: -1px;
 }
 
-.currency__btn:first-child {
+.currency-toggle__btn:first-child {
   border-top-left-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
 }
 
-.currency__btn:last-child {
+.currency-toggle__btn:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.currency__btn.active {
+.currency-toggle__btn.active {
   z-index: 2;
   border-color: #2196f3;
   background-color: #2196f3;
@@ -65,14 +88,20 @@
   cursor: default;
 }
 
-.currency__btn:not(.active):hover,
-.currency__btn:not(.active):focus {
+.currency-toggle__btn:not(.active):hover,
+.currency-toggle__btn:not(.active):focus {
   z-index: 1;
   background-color: #f2fcff;
   border: 1px solid #64b5f5;
 }
 
-.stop-quantity {
+.stop-quantity__title {
+  margin: 0;
+  margin-bottom: 0.25rem;
+  padding: 0 1.25rem;
+}
+
+.stop-quantity__list {
   margin: 0;
   padding: 0;
   list-style: none;
