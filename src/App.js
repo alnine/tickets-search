@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/common/header";
 import Filters from "./components/filters";
+import Tickets from "./components/tickets";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <main className="app__content">
         <Filters />
+        <Tickets />
       </main>
     </div>
   );

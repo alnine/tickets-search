@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 1080px;
+  max-width: 68rem;
   margin: 0 auto;
 }
 
@@ -26,10 +26,11 @@
 .app__content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .app__filters {
+  margin-right: 1.5rem;
   padding: 1.25rem 0;
 }
 
@@ -54,6 +55,7 @@
 .currency-toggle__btn {
   position: relative;
   display: inline-block;
+  min-width: 5rem;
   padding: 0.9375rem 1.5rem;
   font-weight: 600;
   text-align: center;
@@ -151,6 +153,43 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.app__tickets {
+  flex-grow: 1;
+}
+
+.app__ticket {
+  margin-bottom: 1.5rem;
+}
+
+.app__ticket:last-child {
+  margin-bottom: 0;
+}
+
+.ticket {
+  display: flex;
+}
+
+.ticket__buy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid #eceff1;
+}
+
+.ticket__buy-company-logo {
+  width: 10rem;
+  height: 2.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.ticket__buy-company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .ticket__buy-btn {
   width: 100%;
   max-width: 240px;
@@ -167,6 +206,11 @@
   outline: none;
 }
 
+.ticket__buy-btn > span {
+  display: inline-block;
+  width: 100%;
+}
+
 .ticket__buy-btn:hover,
 .ticket__buy-btn:focus {
   background-color: #ff8124;
@@ -175,4 +219,75 @@
 
 .ticket__buy-btn-cost {
   text-transform: uppercase;
+}
+
+.ticket__info {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.ticket__info-departure,
+.ticket__info-arrival {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket__info-departure {
+  align-items: flex-start;
+}
+
+.ticket__info-arrival {
+  align-items: flex-end;
+}
+
+.ticket__info-time {
+  margin-bottom: 0.83rem;
+  font-size: 2.65rem;
+  line-height: 0.8125em;
+}
+
+.ticket__info-place,
+.ticket__info-date {
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+.ticket__info-place {
+  font-weight: 600;
+}
+
+.ticket__info-date {
+  color: #8b9497;
+}
+
+.ticket__info-transfer {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-right: 1em;
+  padding-left: 1.8em;
+  padding-bottom: 0.6em;
+  font-size: 0.83rem;
+  line-height: 1.2em;
+  color: #8b9497;
+  text-transform: uppercase;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #d2d5d6;
+}
+
+.ticket__info-transfer svg {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(1px, -50%);
+  display: block;
+  width: 1.08rem;
+  height: 1.08rem;
+  color: #d2d5d6;
 }
