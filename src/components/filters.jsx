@@ -1,15 +1,12 @@
 import React from "react";
+import CurrencyFilter from "./currencyFilter";
 
-const Filters = () => {
+const Filters = ({ currencies }) => {
   return (
     <div className="section app__filters">
       <div className="app__filter currency-toggle">
         <h2 className="app__filter-title">Валюта</h2>
-        <div className="currency-toggle__row">
-          <button className="currency-toggle__btn active">rub</button>
-          <button className="currency-toggle__btn">usd</button>
-          <button className="currency-toggle__btn">eur</button>
-        </div>
+        <CurrencyFilter currencies={currencies} />
       </div>
       <div className="app__filter app__filter--wide stop-quantity">
         <h2 className="app__filter-title stop-quantity__title">
