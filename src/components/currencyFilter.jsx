@@ -1,14 +1,21 @@
 import React from "react";
 
-const CurrencyFilter = ({ currencies }) => {
+const CurrencyFilter = ({ currencies, selectedCurrency }) => {
   function renderFilterRow(currencies) {
     return (
       <React.Fragment>
-        {currencies.map((currencyItem, index) => (
-          <button key={index} className="currency-toggle__btn">
-            {currencyItem}
-          </button>
-        ))}
+        {currencies.map((currencyItem, index) => {
+          let classes =
+            currencyItem === selectedCurrency
+              ? "currency-toggle__btn active"
+              : "currency-toggle__btn";
+
+          return (
+            <button key={index} className={classes}>
+              {currencyItem}
+            </button>
+          );
+        })}
       </React.Fragment>
     );
   }

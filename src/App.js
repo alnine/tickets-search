@@ -6,15 +6,21 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    currencies: ["rub", "usd", "eur", "hrn"]
+    currencies: ["rub", "usd", "eur", "hrn"],
+    selectedCurrency: "rub"
   };
 
   render() {
+    const { currencies, selectedCurrency } = this.state;
+
     return (
       <div className="container">
         <Header />
         <main className="app__content">
-          <Filters currencies={this.state.currencies} />
+          <Filters
+            currencies={currencies}
+            selectedCurrency={selectedCurrency}
+          />
           <Tickets />
         </main>
       </div>
