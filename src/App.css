@@ -52,6 +52,14 @@
   margin-bottom: 1rem;
 }
 
+.currency-toggle__row {
+  margin-bottom: 0.5rem;
+}
+
+.currency-toggle__row:last-child {
+  margin-bottom: 0;
+}
+
 .currency-toggle__btn {
   position: relative;
   display: inline-block;
