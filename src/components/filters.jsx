@@ -1,7 +1,7 @@
 import React from "react";
 import CurrencyFilter from "./currencyFilter";
 
-const Filters = ({ currencies, selectedCurrency }) => {
+const Filters = ({ currencies, selectedCurrency, onCurrencySelect }) => {
   return (
     <div className="section app__filters">
       <div className="app__filter currency-toggle">
@@ -9,6 +9,7 @@ const Filters = ({ currencies, selectedCurrency }) => {
         <CurrencyFilter
           currencies={currencies}
           selectedCurrency={selectedCurrency}
+          onCurrencySelect={onCurrencySelect}
         />
       </div>
       <div className="app__filter app__filter--wide stop-quantity">

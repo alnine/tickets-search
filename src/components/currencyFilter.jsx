@@ -1,6 +1,6 @@
 import React from "react";
 
-const CurrencyFilter = ({ currencies, selectedCurrency }) => {
+const CurrencyFilter = ({ currencies, selectedCurrency, onCurrencySelect }) => {
   function renderFilterRow(currencies) {
     return (
       <React.Fragment>
@@ -11,7 +11,11 @@ const CurrencyFilter = ({ currencies, selectedCurrency }) => {
               : "currency-toggle__btn";
 
           return (
-            <button key={index} className={classes}>
+            <button
+              key={index}
+              className={classes}
+              onClick={() => onCurrencySelect(currencyItem)}
+            >
               {currencyItem}
             </button>
           );

@@ -10,6 +10,10 @@ class App extends Component {
     selectedCurrency: "rub"
   };
 
+  handleCurrencySelect = currency => {
+    this.setState({ selectedCurrency: currency });
+  };
+
   render() {
     const { currencies, selectedCurrency } = this.state;
 
@@ -20,6 +24,7 @@ class App extends Component {
           <Filters
             currencies={currencies}
             selectedCurrency={selectedCurrency}
+            onCurrencySelect={this.handleCurrencySelect}
           />
           <Tickets />
         </main>
