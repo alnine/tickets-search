@@ -1,24 +1,29 @@
 import React from "react";
 
 const StopQuantityFilter = ({ stops }) => {
-  function renderStopQuantityItem(stop, id) {
+  function renderStopQuantityItem(stop) {
     let classes = stop.value
       ? "stop-quantity__item active"
       : "stop-quantity__item";
 
     return (
-      <li key={id} className={classes}>
+      <li key={stop._id} className={classes}>
         {stop.label}
         <span className="stop-quantity__item-checkbox"></span>
       </li>
     );
   }
 
-  return (
-    <ul className="stop-quantity__list">
-      {stops.map((stop, index) => renderStopQuantityItem(stop, index))}
-    </ul>
-  );
+  let stopItem = "";
+  let renderedItems = [renderStopQuantityItem(stops.all)];
+
+  for (stopItem in stops) {
+    if (stopItem !== "all") {
+      renderedItems.push(renderStopQuantityItem(stops[stopItem]));
+    }
+  }
+
+  return <ul className="stop-quantity__list">{renderedItems}</ul>;
 };
 
 export default StopQuantityFilter;

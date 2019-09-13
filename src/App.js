@@ -8,13 +8,13 @@ class App extends Component {
   state = {
     currencies: ["rub", "usd", "eur"],
     selectedCurrency: "rub",
-    stopQuantity: [
-      { label: "Все", value: false },
-      { label: "Без пересадок", value: true },
-      { label: "1 пересадка", value: true },
-      { label: "2 пересадки", value: true },
-      { label: "3 пересадки", value: false }
-    ]
+    stopQuantity: {
+      all: { _id: "all", label: "Все", value: false },
+      0: { _id: 0, label: "Без пересадок", value: true },
+      1: { _id: 1, label: "1 пересадка", value: true },
+      2: { _id: 2, label: "2 пересадки", value: true },
+      3: { _id: 3, label: "3 пересадки", value: false }
+    }
   };
 
   handleCurrencySelect = currency => {
