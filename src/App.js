@@ -9,11 +9,11 @@ class App extends Component {
     currencies: ["rub", "usd", "eur"],
     selectedCurrency: "rub",
     stopQuantity: {
-      all: { _id: "all", label: "Все", value: false },
-      0: { _id: 0, label: "Без пересадок", value: true },
-      1: { _id: 1, label: "1 пересадка", value: true },
-      2: { _id: 2, label: "2 пересадки", value: true },
-      3: { _id: 3, label: "3 пересадки", value: false }
+      all: { _id: "all", label: "Все", isActive: false },
+      0: { _id: 0, label: "Без пересадок", isActive: true },
+      1: { _id: 1, label: "1 пересадка", isActive: true },
+      2: { _id: 2, label: "2 пересадки", isActive: true },
+      3: { _id: 3, label: "3 пересадки", isActive: false }
     }
   };
 

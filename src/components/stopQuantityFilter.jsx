@@ -2,7 +2,7 @@ import React from "react";
 
 const StopQuantityFilter = ({ stops }) => {
   function renderStopQuantityItem(stop) {
-    let classes = stop.value
+    let classes = stop.isActive
       ? "stop-quantity__item active"
       : "stop-quantity__item";
 
