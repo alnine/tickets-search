@@ -9,16 +9,36 @@ class App extends Component {
     currencies: ["rub", "usd", "eur"],
     selectedCurrency: "rub",
     stopQuantity: {
-      all: { _id: "all", label: "Все", isActive: false },
-      0: { _id: 0, label: "Без пересадок", isActive: true },
-      1: { _id: 1, label: "1 пересадка", isActive: true },
-      2: { _id: 2, label: "2 пересадки", isActive: true },
-      3: { _id: 3, label: "3 пересадки", isActive: false }
+      all: { value: "all", label: "Все", isActive: false },
+      0: { value: 0, label: "Без пересадок", isActive: true },
+      1: { value: 1, label: "1 пересадка", isActive: true },
+      2: { value: 2, label: "2 пересадки", isActive: true },
+      3: { value: 3, label: "3 пересадки", isActive: false }
     }
   };
 
   handleCurrencySelect = currency => {
     this.setState({ selectedCurrency: currency });
+  };
+
+  handleStopQuantitySelect = stopValue => {
+    const stopQuantity = { ...this.state.stopQuantity };
+
+    if (stopValue === "all") {
+      const allItemValue = !stopQuantity[stopValue].isActive;
+      let item = "";
+      for (item in stopQuantity) {
+        stopQuantity[item].isActive = allItemValue;
+      }
+      this.setState({ stopQuantity });
+      return;
+    }
+
+    if (stopQuantity.all.isActive) {
+      stopQuantity.all.isActive = false;
+    }
+    stopQuantity[stopValue].isActive = !stopQuantity[stopValue].isActive;
+    this.setState({ stopQuantity });
   };
 
   render() {
@@ -33,6 +53,7 @@ class App extends Component {
             selectedCurrency={selectedCurrency}
             stopQuantity={stopQuantity}
             onCurrencySelect={this.handleCurrencySelect}
+            onStopQuantitySelect={this.handleStopQuantitySelect}
           />
           <Tickets />
         </main>

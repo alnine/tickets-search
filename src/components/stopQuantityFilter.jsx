@@ -1,13 +1,18 @@
 import React from "react";
 
-const StopQuantityFilter = ({ stops }) => {
+const StopQuantityFilter = ({ stops, onStopQuantitySelect }) => {
   function renderStopQuantityItem(stop) {
     let classes = stop.isActive
       ? "stop-quantity__item active"
       : "stop-quantity__item";
 
     return (
-      <li key={stop._id} className={classes}>
+      <li
+        key={stop.value}
+        className={classes}
+        data-value={stop.value}
+        onClick={() => onStopQuantitySelect(stop.value)}
+      >
         {stop.label}
         <span className="stop-quantity__item-checkbox"></span>
       </li>

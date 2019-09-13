@@ -6,7 +6,8 @@ const Filters = ({
   currencies,
   selectedCurrency,
   stopQuantity,
-  onCurrencySelect
+  onCurrencySelect,
+  onStopQuantitySelect
 }) => {
   return (
     <div className="section app__filters">
@@ -22,7 +23,10 @@ const Filters = ({
         <h2 className="app__filter-title stop-quantity__title">
           Количество пересадок
         </h2>
-        <StopQuantityFilter stops={stopQuantity} />
+        <StopQuantityFilter
+          stops={stopQuantity}
+          onStopQuantitySelect={onStopQuantitySelect}
+        />
       </div>
     </div>
   );
