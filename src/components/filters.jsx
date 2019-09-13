@@ -1,7 +1,13 @@
 import React from "react";
 import CurrencyFilter from "./currencyFilter";
+import StopQuantityFilter from "./stopQuantityFilter";
 
-const Filters = ({ currencies, selectedCurrency, onCurrencySelect }) => {
+const Filters = ({
+  currencies,
+  selectedCurrency,
+  stopQuantity,
+  onCurrencySelect
+}) => {
   return (
     <div className="section app__filters">
       <div className="app__filter currency-toggle">
@@ -16,28 +22,7 @@ const Filters = ({ currencies, selectedCurrency, onCurrencySelect }) => {
         <h2 className="app__filter-title stop-quantity__title">
           Количество пересадок
         </h2>
-        <ul className="stop-quantity__list">
-          <li className="stop-quantity__item">
-            Все
-            <span className="stop-quantity__item-checkbox"></span>
-          </li>
-          <li className="stop-quantity__item">
-            Без пересадок
-            <span className="stop-quantity__item-checkbox"></span>
-          </li>
-          <li className="stop-quantity__item">
-            1 пересадка
-            <span className="stop-quantity__item-checkbox"></span>
-          </li>
-          <li className="stop-quantity__item">
-            2 пересадки
-            <span className="stop-quantity__item-checkbox"></span>
-          </li>
-          <li className="stop-quantity__item">
-            3 пересадки
-            <span className="stop-quantity__item-checkbox"></span>
-          </li>
-        </ul>
+        <StopQuantityFilter stops={stopQuantity} />
       </div>
     </div>
   );
