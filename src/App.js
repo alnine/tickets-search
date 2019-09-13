@@ -6,7 +6,7 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    currencies: ["rub", "usd", "eur", "hrn"],
+    currencies: ["rub", "usd", "eur"],
     selectedCurrency: "rub"
   };
 
