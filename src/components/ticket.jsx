@@ -1,5 +1,5 @@
 import React from "react";
-import { getCarrierData } from "./service/carrierData";
+import TicketBuy from "./ticketBuy";
 
 const Ticket = ({ data }) => {
   function getDateString(input) {
@@ -36,23 +36,9 @@ const Ticket = ({ data }) => {
     return count === 1 ? "1 пересадка" : `${count} пересадки`;
   }
 
-  const carrier = getCarrierData(data.carrier);
-  const stopStr = data.stops;
-
   return (
     <div className="app__ticket ticket section">
-      <div className="ticket__buy">
-        <div className="ticket__buy-company-logo">
-          <img src={carrier.img} alt={carrier.name} />
-        </div>
-        <button className="ticket__buy-btn">
-          Купить
-          <span>
-            за&nbsp;
-            <span className="ticket__buy-btn-cost">{data.price}р</span>
-          </span>
-        </button>
-      </div>
+      <TicketBuy carrierCode={data.carrier} price={data.price} />
       <div className="ticket__info">
         <div className="ticket__info-departure">
           <span className="ticket__info-time">{data.departure_time}</span>
