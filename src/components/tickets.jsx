@@ -1,10 +1,12 @@
 import React from "react";
 import Ticket from "./ticket";
 
-const Tickets = () => {
+const Tickets = ({ tickets, carriers }) => {
   return (
     <div className="app__tickets">
-      <Ticket />
+      {tickets.map((ticket, index) => (
+        <Ticket key={index} data={ticket} />
+      ))}
     </div>
   );
 };

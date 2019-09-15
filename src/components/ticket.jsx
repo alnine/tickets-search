@@ -1,31 +1,68 @@
 import React from "react";
+import { getCarrierData } from "./service/carrierData";
 
-const Ticket = () => {
+const Ticket = ({ data }) => {
+  function getDateString(input) {
+    const inputData = {
+      day: parseInt(input.split(".")[0]),
+      month: parseInt(input.split(".")[1]) - 1,
+      year: 20 + input.split(".")[2]
+    };
+
+    const date = new Date(inputData.year, inputData.month, inputData.day);
+    const day = date.getDate();
+    const month = date.toLocaleString("ru", { month: "long" }).slice(0, 3);
+    const weekDay = date.toLocaleString("ru", { weekday: "short" }).slice(0, 2);
+
+    let capitalizeWeekDay = "";
+
+    for (let char = 0; char < weekDay.length; char++) {
+      if (char === 0) {
+        capitalizeWeekDay = weekDay[char].toUpperCase();
+        continue;
+      }
+      capitalizeWeekDay += weekDay[char];
+    }
+
+    const result = `${day} ${month} ${inputData.year}, ${capitalizeWeekDay}`;
+    return result;
+  }
+
+  function getStopsStr(count) {
+    if (count === 0) {
+      return "";
+    }
+
+    return count === 1 ? "1 пересадка" : `${count} пересадки`;
+  }
+
+  const carrier = getCarrierData(data.carrier);
+  const stopStr = data.stops;
+
   return (
     <div className="app__ticket ticket section">
       <div className="ticket__buy">
         <div className="ticket__buy-company-logo">
-          <img
-            src="https://via.placeholder.com/160x46?text=Company+logo"
-            alt="Company name"
-          />
+          <img src={carrier.img} alt={carrier.name} />
         </div>
         <button className="ticket__buy-btn">
           Купить
           <span>
             за&nbsp;
-            <span className="ticket__buy-btn-cost">21032р</span>
+            <span className="ticket__buy-btn-cost">{data.price}р</span>
           </span>
         </button>
       </div>
       <div className="ticket__info">
         <div className="ticket__info-departure">
-          <span className="ticket__info-time">09:25</span>
-          <span className="ticket__info-place">VVO, Владивосток</span>
-          <span className="ticket__info-date">9 окт 2018, Пт</span>
+          <span className="ticket__info-time">{data.departure_time}</span>
+          <span className="ticket__info-place">{`${data.origin}, ${data.origin_name}`}</span>
+          <span className="ticket__info-date">
+            {getDateString(data.departure_date)}
+          </span>
         </div>
         <div className="ticket__info-transfer">
-          1 пересадка
+          {getStopsStr(data.stops)}
           <svg
             width="13"
             height="13"
@@ -37,9 +74,11 @@ const Ticket = () => {
           </svg>
         </div>
         <div className="ticket__info-arrival">
-          <span className="ticket__info-time">11:45</span>
-          <span className="ticket__info-place">Тель-Авив, TLV</span>
-          <span className="ticket__info-date">10 окт 2018, Пт</span>
+          <span className="ticket__info-time">{data.arrival_time}</span>
+          <span className="ticket__info-place">{`${data.destination_name}, ${data.destination}`}</span>
+          <span className="ticket__info-date">
+            {getDateString(data.arrival_date)}
+          </span>
         </div>
       </div>
     </div>

@@ -6,6 +6,21 @@ import "./App.css";
 
 class App extends Component {
   state = {
+    tickets: [
+      {
+        origin: "VVO",
+        origin_name: "Владивосток",
+        destination: "TLV",
+        destination_name: "Тель-Авив",
+        departure_date: "12.05.18",
+        departure_time: "16:20",
+        arrival_date: "12.05.18",
+        arrival_time: "22:10",
+        carrier: "TK",
+        stops: 3,
+        price: 12400
+      }
+    ],
     currencies: ["rub", "usd", "eur"],
     selectedCurrency: "rub",
     stopQuantity: {
@@ -42,7 +57,7 @@ class App extends Component {
   };
 
   render() {
-    const { currencies, selectedCurrency, stopQuantity } = this.state;
+    const { currencies, selectedCurrency, stopQuantity, tickets } = this.state;
 
     return (
       <div className="container">
@@ -55,7 +70,7 @@ class App extends Component {
             onCurrencySelect={this.handleCurrencySelect}
             onStopQuantitySelect={this.handleStopQuantitySelect}
           />
-          <Tickets />
+          <Tickets tickets={tickets} />
         </main>
       </div>
     );
