@@ -199,9 +199,8 @@
 }
 
 .ticket__buy-btn {
-  width: 100%;
-  max-width: 240px;
-  padding: 0.5rem 3.125rem;
+  width: 240px;
+  padding: 0.5rem;
   font-size: 1.25rem;
   line-height: 1.3em;
   color: #ffffff;
@@ -214,7 +213,7 @@
   outline: none;
 }
 
-.ticket__buy-btn > span {
+.ticket__buy-btn-cost {
   display: inline-block;
   width: 100%;
 }
@@ -223,10 +222,6 @@
 .ticket__buy-btn:focus {
   background-color: #ff8124;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25), 0px 1px 0px #f7661d;
-}
-
-.ticket__buy-btn-cost {
-  text-transform: uppercase;
 }
 
 .ticket__info {

@@ -4,6 +4,15 @@ import { getCarrierData } from "./service/carrierData";
 const TicketBuy = ({ carrierCode, price }) => {
   const carrier = getCarrierData(carrierCode);
 
+  function getCost(price) {
+    price = price.toLocaleString("ru", {
+      style: "currency",
+      currency: "RUB",
+      minimumFractionDigits: 0
+    });
+    return <span className="ticket__buy-btn-cost">{`за ${price}`}</span>;
+  }
+
   return (
     <div className="ticket__buy">
       <div className="ticket__buy-company-logo">
@@ -11,10 +20,7 @@ const TicketBuy = ({ carrierCode, price }) => {
       </div>
       <button className="ticket__buy-btn">
         Купить
-        <span>
-          за&nbsp;
-          <span className="ticket__buy-btn-cost">{price}р</span>
-        </span>
+        {getCost(price)}
       </button>
     </div>
   );
