@@ -1,4 +1,5 @@
 import React from "react";
+import TicketDeparture from "./ticketDeparture";
 import { getDateString } from "./utils/utils";
 
 const TicketInfo = ({ departureData, arrivalData, stops }) => {
@@ -12,13 +13,12 @@ const TicketInfo = ({ departureData, arrivalData, stops }) => {
 
   return (
     <div className="ticket__info">
-      <div className="ticket__info-departure">
-        <span className="ticket__info-time">{departureData.time}</span>
-        <span className="ticket__info-place">{`${departureData.origin}, ${departureData.name}`}</span>
-        <span className="ticket__info-date">
-          {getDateString(departureData.date)}
-        </span>
-      </div>
+      <TicketDeparture
+        time={departureData.time}
+        date={departureData.date}
+        origin={departureData.origin}
+        name={departureData.name}
+      />
       <div className="ticket__info-transfer">
         {getStopsStr(stops)}
         <svg
