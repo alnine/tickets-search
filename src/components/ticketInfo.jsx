@@ -1,4 +1,5 @@
 import React from "react";
+import { toCapitalize } from "./utils/utils";
 
 const TicketInfo = ({ departureData, arrivalData, stops }) => {
   function getDateString(input) {
@@ -7,24 +8,12 @@ const TicketInfo = ({ departureData, arrivalData, stops }) => {
       month: parseInt(input.split(".")[1]) - 1,
       year: 20 + input.split(".")[2]
     };
-
     const date = new Date(inputData.year, inputData.month, inputData.day);
     const day = date.getDate();
     const month = date.toLocaleString("ru", { month: "long" }).slice(0, 3);
     const weekDay = date.toLocaleString("ru", { weekday: "short" }).slice(0, 2);
 
-    let capitalizeWeekDay = "";
-
-    for (let char = 0; char < weekDay.length; char++) {
-      if (char === 0) {
-        capitalizeWeekDay = weekDay[char].toUpperCase();
-        continue;
-      }
-      capitalizeWeekDay += weekDay[char];
-    }
-
-    const result = `${day} ${month} ${inputData.year}, ${capitalizeWeekDay}`;
-    return result;
+    return `${day} ${month} ${inputData.year}, ${toCapitalize(weekDay)}`;
   }
 
   function getStopsStr(count) {
