@@ -1,21 +1,7 @@
 import React from "react";
-import { toCapitalize } from "./utils/utils";
+import { getDateString } from "./utils/utils";
 
 const TicketInfo = ({ departureData, arrivalData, stops }) => {
-  function getDateString(input) {
-    const inputData = {
-      day: parseInt(input.split(".")[0]),
-      month: parseInt(input.split(".")[1]) - 1,
-      year: 20 + input.split(".")[2]
-    };
-    const date = new Date(inputData.year, inputData.month, inputData.day);
-    const day = date.getDate();
-    const month = date.toLocaleString("ru", { month: "long" }).slice(0, 3);
-    const weekDay = date.toLocaleString("ru", { weekday: "short" }).slice(0, 2);
-
-    return `${day} ${month} ${inputData.year}, ${toCapitalize(weekDay)}`;
-  }
-
   function getStopsStr(count) {
     if (count === 0) {
       return "";
