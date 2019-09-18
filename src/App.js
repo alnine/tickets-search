@@ -33,17 +33,25 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    this.getCurrencyQuotes("RUB", this.state.currencies);
+  async componentDidMount() {
+    const { currencies } = this.state;
+    const baseCurrency = "RUB";
+    const currencyQuotes = await this.getCurrencyQuotes(
+      baseCurrency,
+      currencies
+    );
+
+    this.setState({ currencyQuotes });
   }
 
-  getCurrencyQuotes(base, currencies) {
+  async getCurrencyQuotes(base, currencies) {
     const urlApi = "https://api.exchangeratesapi.io/latest?";
     const url = `${urlApi}base=${base}&symbols=${currencies.join(",")}`;
 
-    fetch(url)
-      .then(responce => responce.json())
-      .then(result => this.setState({ currencyQuotes: result.rates }));
+    const response = await fetch(url);
+    const quotesData = await response.json();
+
+    return quotesData.rates;
   }
 
   handleCurrencySelect = currency => {
