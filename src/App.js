@@ -4,6 +4,7 @@ import Filters from "./components/filters";
 import Tickets from "./components/tickets";
 import { getTickets } from "./components/service/ticketsData";
 import "./App.css";
+import _ from "lodash";
 
 class App extends Component {
   state = {
@@ -17,7 +18,8 @@ class App extends Component {
       1: { value: 1, label: "1 пересадка", isActive: true },
       2: { value: 2, label: "2 пересадки", isActive: true },
       3: { value: 3, label: "3 пересадки", isActive: false }
-    }
+    },
+    sortData: { path: "price", order: "asc" }
   };
 
   async componentDidMount() {
@@ -68,13 +70,13 @@ class App extends Component {
   };
 
   getFilteredTickets = () => {
-    const { tickets: allTickets, stopQuantity } = this.state;
+    const { tickets, stopQuantity, sortData } = this.state;
 
-    const filtered = allTickets.filter(
+    const filtered = tickets.filter(
       ticket => stopQuantity[ticket.stops].isActive
     );
 
-    return filtered;
+    return _.orderBy(filtered, [sortData.path], [sortData.order]);
   };
 
   render() {
