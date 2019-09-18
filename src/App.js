@@ -21,7 +21,8 @@ class App extends Component {
         price: 12400
       }
     ],
-    currencies: ["RUB", "USD", "EUR"],
+    currencies: ["RUB", "USD", "EUR", "JPY"],
+    currencyQuotes: {},
     selectedCurrency: "RUB",
     stopQuantity: {
       all: { value: "all", label: "Все", isActive: false },
@@ -31,6 +32,19 @@ class App extends Component {
       3: { value: 3, label: "3 пересадки", isActive: false }
     }
   };
+
+  componentDidMount() {
+    this.getCurrencyQuotes("RUB", this.state.currencies);
+  }
+
+  getCurrencyQuotes(base, currencies) {
+    const urlApi = "https://api.exchangeratesapi.io/latest?";
+    const url = `${urlApi}base=${base}&symbols=${currencies.join(",")}`;
+
+    fetch(url)
+      .then(responce => responce.json())
+      .then(result => this.setState({ currencyQuotes: result.rates }));
+  }
 
   handleCurrencySelect = currency => {
     this.setState({ selectedCurrency: currency });
@@ -57,7 +71,13 @@ class App extends Component {
   };
 
   render() {
-    const { currencies, selectedCurrency, stopQuantity, tickets } = this.state;
+    const {
+      currencies,
+      selectedCurrency,
+      stopQuantity,
+      tickets,
+      currencyQuotes
+    } = this.state;
 
     return (
       <div className="container">
@@ -70,7 +90,11 @@ class App extends Component {
             onCurrencySelect={this.handleCurrencySelect}
             onStopQuantitySelect={this.handleStopQuantitySelect}
           />
-          <Tickets tickets={tickets} selectedCurrency={selectedCurrency} />
+          <Tickets
+            tickets={tickets}
+            selectedCurrency={selectedCurrency}
+            currencyQuotes={currencyQuotes}
+          />
         </main>
       </div>
     );

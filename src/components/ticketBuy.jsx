@@ -1,16 +1,22 @@
 import React from "react";
 import { getCarrierData } from "./service/carrierData";
 
-const TicketBuy = ({ carrierCode, price, selectedCurrency }) => {
+const TicketBuy = ({
+  carrierCode,
+  price,
+  selectedCurrency,
+  currencyQuotes
+}) => {
   const carrier = getCarrierData(carrierCode);
 
   function getCost(price) {
-    price = price.toLocaleString("ru", {
+    const convertedPrice = Math.ceil(price * currencyQuotes[selectedCurrency]);
+
+    return convertedPrice.toLocaleString("ru", {
       style: "currency",
       currency: selectedCurrency,
       minimumFractionDigits: 0
     });
-    return <span className="ticket__buy-btn-cost">{`за ${price}`}</span>;
   }
 
   return (
@@ -20,7 +26,7 @@ const TicketBuy = ({ carrierCode, price, selectedCurrency }) => {
       </div>
       <button className="ticket__buy-btn">
         Купить
-        {getCost(price)}
+        <span className="ticket__buy-btn-cost">{`за ${getCost(price)}`}</span>
       </button>
     </div>
   );
