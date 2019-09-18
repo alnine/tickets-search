@@ -67,14 +67,25 @@ class App extends Component {
     this.setState({ stopQuantity });
   };
 
+  getFilteredTickets = () => {
+    const { tickets: allTickets, stopQuantity } = this.state;
+
+    const filtered = allTickets.filter(
+      ticket => stopQuantity[ticket.stops].isActive
+    );
+
+    return filtered;
+  };
+
   render() {
     const {
       currencies,
       selectedCurrency,
       stopQuantity,
-      tickets,
       currencyQuotes
     } = this.state;
+
+    const tickets = this.getFilteredTickets();
 
     return (
       <div className="container">
