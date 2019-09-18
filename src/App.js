@@ -21,8 +21,8 @@ class App extends Component {
         price: 12400
       }
     ],
-    currencies: ["rub", "usd", "eur"],
-    selectedCurrency: "rub",
+    currencies: ["RUB", "USD", "EUR"],
+    selectedCurrency: "RUB",
     stopQuantity: {
       all: { value: "all", label: "Все", isActive: false },
       0: { value: 0, label: "Без пересадок", isActive: true },
@@ -70,7 +70,7 @@ class App extends Component {
             onCurrencySelect={this.handleCurrencySelect}
             onStopQuantitySelect={this.handleStopQuantitySelect}
           />
-          <Tickets tickets={tickets} />
+          <Tickets tickets={tickets} selectedCurrency={selectedCurrency} />
         </main>
       </div>
     );

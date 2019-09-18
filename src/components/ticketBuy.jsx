@@ -1,13 +1,13 @@
 import React from "react";
 import { getCarrierData } from "./service/carrierData";
 
-const TicketBuy = ({ carrierCode, price }) => {
+const TicketBuy = ({ carrierCode, price, selectedCurrency }) => {
   const carrier = getCarrierData(carrierCode);
 
   function getCost(price) {
     price = price.toLocaleString("ru", {
       style: "currency",
-      currency: "RUB",
+      currency: selectedCurrency,
       minimumFractionDigits: 0
     });
     return <span className="ticket__buy-btn-cost">{`за ${price}`}</span>;

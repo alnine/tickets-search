@@ -2,7 +2,7 @@ import React from "react";
 import TicketBuy from "./ticketBuy";
 import TicketInfo from "./ticketInfo";
 
-const Ticket = ({ data }) => {
+const Ticket = ({ data, selectedCurrency }) => {
   const departureData = {
     time: data.departure_time,
     date: data.departure_date,
@@ -19,7 +19,11 @@ const Ticket = ({ data }) => {
 
   return (
     <div className="app__ticket ticket section">
-      <TicketBuy carrierCode={data.carrier} price={data.price} />
+      <TicketBuy
+        carrierCode={data.carrier}
+        price={data.price}
+        selectedCurrency={selectedCurrency}
+      />
       <TicketInfo
         departureData={departureData}
         arrivalData={arrivalData}
