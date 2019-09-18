@@ -2,25 +2,12 @@ import React, { Component } from "react";
 import Header from "./components/common/header";
 import Filters from "./components/filters";
 import Tickets from "./components/tickets";
+import { getTickets } from "./components/service/ticketsData";
 import "./App.css";
 
 class App extends Component {
   state = {
-    tickets: [
-      {
-        origin: "VVO",
-        origin_name: "Владивосток",
-        destination: "TLV",
-        destination_name: "Тель-Авив",
-        departure_date: "12.05.18",
-        departure_time: "16:20",
-        arrival_date: "12.05.18",
-        arrival_time: "22:10",
-        carrier: "TK",
-        stops: 3,
-        price: 12400
-      }
-    ],
+    tickets: [],
     currencies: ["RUB", "USD", "EUR"],
     currencyQuotes: {},
     selectedCurrency: "RUB",
@@ -36,12 +23,14 @@ class App extends Component {
   async componentDidMount() {
     const { currencies } = this.state;
     const baseCurrency = "RUB";
+
     const currencyQuotes = await this.getCurrencyQuotes(
       baseCurrency,
       currencies
     );
+    const tickets = await getTickets();
 
-    this.setState({ currencyQuotes });
+    this.setState({ currencyQuotes, tickets });
   }
 
   async getCurrencyQuotes(base, currencies) {
