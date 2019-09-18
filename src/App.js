@@ -21,7 +21,7 @@ class App extends Component {
         price: 12400
       }
     ],
-    currencies: ["RUB", "USD", "EUR", "JPY"],
+    currencies: ["RUB", "USD", "EUR"],
     currencyQuotes: {},
     selectedCurrency: "RUB",
     stopQuantity: {
