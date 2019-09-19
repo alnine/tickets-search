@@ -49,8 +49,17 @@ class App extends Component {
     this.setState({ selectedCurrency: currency });
   };
 
-  handleStopQuantitySelect = stopValue => {
+  handleStopQuantitySelect = (target, stopValue) => {
     const stopQuantity = { ...this.state.stopQuantity };
+    if (target.dataset.alone) {
+      let item = "";
+      for (item in stopQuantity) {
+        stopQuantity[item].isActive = false;
+      }
+      stopQuantity[stopValue].isActive = true;
+      this.setState({ stopQuantity });
+      return;
+    }
 
     if (stopValue === "all") {
       const allItemValue = !stopQuantity[stopValue].isActive;

@@ -10,10 +10,14 @@ const StopQuantityFilter = ({ stops, onStopQuantitySelect }) => {
       <li
         key={stop.value}
         className={classes}
-        data-value={stop.value}
-        onClick={() => onStopQuantitySelect(stop.value)}
+        onClick={e => onStopQuantitySelect(e.target, stop.value)}
       >
         {stop.label}
+        {stop.value !== "all" && (
+          <span className="stop-quantity__item-alone" data-alone="true">
+            только
+          </span>
+        )}
         <span className="stop-quantity__item-checkbox"></span>
       </li>
     );

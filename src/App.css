@@ -119,6 +119,8 @@
 }
 
 .stop-quantity__item {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   padding: 0.875rem 1.25rem;
   padding-left: 3.75rem;
@@ -126,9 +128,26 @@
   cursor: pointer;
 }
 
+.stop-quantity__item-alone {
+  font-size: 0.9rem;
+  color: #2196f3;
+  text-transform: uppercase;
+  transition: all ease-in-out 0.25s;
+  opacity: 0;
+}
+
+.stop-quantity__item-alone:hover {
+  text-decoration: underline;
+}
+
 .stop-quantity__item:hover,
 .stop-quantity__item:focus {
   background-color: #f1fcff;
+}
+
+.stop-quantity__item:hover > .stop-quantity__item-alone,
+.stop-quantity__item:focus > .stop-quantity__item-alone {
+  opacity: 1;
 }
 
 .stop-quantity__item-checkbox {
