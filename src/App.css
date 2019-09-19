@@ -311,3 +311,63 @@
   height: 1.08rem;
   color: #d2d5d6;
 }
+
+@media (max-width: 1110px) {
+  .container {
+    max-width: 55.25rem;
+  }
+
+  .ticket__buy {
+    justify-content: center;
+  }
+
+  .ticket__info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ticket__info-departure,
+  .ticket__info-arrival {
+    align-items: center;
+  }
+
+  .ticket__info-transfer {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 1rem 0 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: 36.5rem;
+  }
+
+  .ticket {
+    flex-direction: column;
+  }
+
+  .ticket__buy {
+    border-right: none;
+    border-bottom: 1px solid #eceff1;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    max-width: 320px;
+    padding: 0 20px;
+  }
+
+  .app__content {
+    flex-direction: column;
+  }
+
+  .app__filters {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+}
