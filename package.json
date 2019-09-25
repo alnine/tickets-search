@@ -1,5 +1,6 @@
 {
   "name": "tickets-search",
+  "homepage": "http://alnine.github.io/projects/tickets",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
